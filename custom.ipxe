@@ -2,8 +2,6 @@
 ###
 ### netboot.xyz-custom menu example
 ###
-isset ${dhcp-server} && set ipparam ip=dhcp || set ipparam ip=${ip}::${gateway}:${netmask}:::none nameserver=${dns}
-set ipparam BOOTIF=${netX/mac} ${ipparam}
 
 :custom
 clear custom_choice
@@ -17,7 +15,7 @@ goto custom_exit
 :kinoite
 kernel https://mirror.arizona.edu/fedora/linux/releases/35/Kinoite/x86_64/os/images/pxeboot/vmlinuz
 initrd https://mirror.arizona.edu/fedora/linux/releases/35/Kinoite/x86_64/os/images/pxeboot/initrd.img
-imgargs vmlinuz mitigations=off ${ipparam}
+imgargs vmlinuz mitigations=off
 boot || goto custom_exit
 
 :custom_exit
